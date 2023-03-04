@@ -39,21 +39,24 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
+        binding.buttonSetalarms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 EditText et = binding.textviewFirst;
-//                EditText et = (EditText) view.findViewById(R.id.textview_first);
                 String str = et.getText().toString();
                 setAlarms(str);
-
-
-
-//                NavHostFragment.findNavController(FirstFragment.this)
-//                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
             }
         });
+
+        binding.buttonClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText et = binding.textviewFirst;
+                et.setText("");
+            }
+        });
+
+
     }
 
     @Override

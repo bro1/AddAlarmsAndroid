@@ -17,19 +17,36 @@
         android:gravity="top|left"
         android:hint="13:30 Meeting title"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@id/button_first"
+        app:layout_constraintBottom_toTopOf="@id/button_setalarms"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <Button
-        android:id="@+id/button_first"
+        android:id="@+id/button_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/clear"
+        app:layout_constraintWidth_min="140dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button_setalarms"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_first"
+        />
+
+
+    <Button
+        android:id="@+id/button_setalarms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/set_alarms"
+        app:layout_constraintWidth_min="140dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_clear"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textview_first" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
