@@ -1,16 +1,9 @@
 package nz.theysay.addalarms;
 
-import static java.lang.Thread.*;
-
-import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.provider.AlarmClock;
-import android.view.View;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -21,15 +14,6 @@ import nz.theysay.addalarms.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.ZoneId;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,30 +33,12 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-//        binding.fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action 10 ", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//
-//
-//                EditText et = (EditText) findViewById(R.id.textview_first);
-//                String str = et.getText().toString();
-//
-//
-//                setAlarms(str);
-//
-//
-//
-//            }
-//        });
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.menu_main, menu);
         return false;
     }
 
