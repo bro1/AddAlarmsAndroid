@@ -1,11 +1,8 @@
 <resources>
     <string name="app_name">Add Alarms</string>
     <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Add alarms (2 minutes ahead)</string>
-    <string name="second_fragment_label">Second Fragment</string>
     <string name="set_alarms">Set Alarms</string>
-    <string name="previous">Previous</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="clear">Clear</string>
+    <string name="warning_middle_of_night">At least one the alarms is set for the middle of the night. This app uses 24 hour notation. \n If that\'s not what you have intended, please unset the alarm in your phone\'s alarm app.</string>
 </resources>

@@ -2,6 +2,7 @@ package nz.theysay.addalarms;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.AlarmClock;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +12,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -45,6 +50,7 @@ public class FirstFragment extends Fragment {
                 EditText et = binding.textviewFirst;
                 String str = et.getText().toString();
                 setAlarms(str);
+
             }
         });
 
@@ -53,6 +59,7 @@ public class FirstFragment extends Fragment {
             public void onClick(View view) {
                 EditText et = binding.textviewFirst;
                 et.setText("");
+                binding.textviewWarning.setVisibility(View.GONE);
             }
         });
 
@@ -71,6 +78,10 @@ public class FirstFragment extends Fragment {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 
         String[] lines = str.split("\n");
+
+        int c = 0;
+
+        boolean warningDone = false;
 
         for (String l : lines) {
             String lv = l.trim();
@@ -101,12 +112,28 @@ public class FirstFragment extends Fragment {
 
                 if (dt == null) continue;
 
-                setAlarm(dt, title);
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException ie) {
-                    Thread.currentThread().interrupt();
+                final Date d = dt;
+
+                if (!warningDone) {
+                    LocalDateTime aaa = d.toInstant()
+                            .atZone(ZoneId.systemDefault())
+                            .toLocalDateTime();
+                    int h = aaa.getHour();
+                    if (h == 23 || h <= 5) {
+                        binding.textviewWarning.setVisibility(View.VISIBLE);
+                        warningDone = true;
+                    }
                 }
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        setAlarm(d, title);
+                    }
+                }, c*1000);
+
+                c++;
+
             }
         }
 
